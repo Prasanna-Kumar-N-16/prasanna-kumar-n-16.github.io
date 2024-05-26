@@ -13,7 +13,7 @@
 
 :root {
     --bg-color:#191f36;
-    --snd-bf-color: #262840;
+    --snd-bg-color: #262840;
     --text-color: #fff;
     --main-color:#59B2F4;
 }
@@ -134,10 +134,193 @@ span{
 }
 
 
+.social-media a:hover {
+    background: var(--main-color);
+    color: var(--snd-bg-color);
+    box-shadow: 0 0 irem var(--main-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: var(--main-color);
+    border-radius: 4rem;
+    box-shadow: 0 0 1rem var(--main-color);
+    font-size: 1.6rem;
+    color: var(--bg-color);
+    letter-spacing: .1rem;
+    font-weight: 600;
+    transition: .5s ease;
+}
+
+.btn:hover{
+    box-shadow: none;
+}
+
+.btn:hover {
+    box-shadow: none;
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background: var(--snd-bg-color);
+}
+
+.about-img img{
+    width: 35vm;
+}
+
+.heading {
+    text-align: center;
+    font-size: 4.5rem;
+}
+
+.about-content h2 {
+    text-align: left;
+    line-height: 1.2;
+}
+
+.about-content h3 {
+    font-size: 2.6rem;
+}
+
+.about-content p {
+    font-size: 1.6rem;
+    margin: 2rem 0 3rem;
+}
+
+
+.skills h2 {
+    margin-bottom: 5rem;
+}
+
+.skills-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.skills-container .skills-box {
+    flex: 1 1 30rem;
+    background: var(--snd-bg-color);
+    padding: 3rem 2rem 4rem;
+    border-radius: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    border: 0.8rem solid var(--bg-color);
+    transition: .5s ease;
+}
+
+.skills-container .skills-box:hover {
+    border-color: var(--main-color);
+    transform: scale(0.8);
+}
+
+.skills-box i {
+    font-size: 7rem;
+    color: var(--main-color);
+}
+
+.skills-box h3 {
+    font-size: 2.6rem;
+    margin-bottom: 10px;
+}
+
+.skills-box ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px;
+}
+
+.skills-box ul li {
+    margin-bottom: 2px;
+    font-size: 1.6rem;
+    margin: 0.5rem 0 1rem;
+}
+
+
+.contact h2 {
+    margin-bottom: 3rem;
+}
+    
+.contact form {
+    max-width: 70rem;
+    margin: 1rem auto;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+    
+.contact form .input-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+    
+.contact form .input-box input ,
+.contact form textarea{
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    background: var(--snd-bg-color);
+    border-radius: 0.8rem;
+    margin: 0.7rem 0;
+}
+
+.contact form .input-box input {
+    width: 49%;
+}
+
+.contact form textarea {
+    resize: none;
+}
+
+.contact form .btn {
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.contact-container .contact-box {
+    flex: 1 1 30rem;
+    background: var(--snd-bg-color);
+    padding: 3rem 2rem 4rem;
+    border-radius: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    border: 0.8rem solid var(--bg-color);
+    transition: .5s ease;
+}
+
+.contact-box i {
+    font-size: 7rem;
+    color: var(--main-color);
+}
+
+.contact-box h3 {
+    font-size: 2.6rem;
+    margin-bottom: 10px;
+}
+
+
+
+
 /* Add this CSS to your existing styles */
 .fa-bars, /* Adjusting the size of the menu icon */
-.fa-linkedin,
-.fa-github {
+.fa-linkedin, .fa-github , .fa-medium {
     font-size: 2.5rem; /* Set the desired size for all icons */
     color: var(--text-color); /* Ensure consistent color */
 }
