@@ -195,6 +195,9 @@
             <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
             <input type="submit" value="Submit" class="btn">
         </form>
+
+        <div id="message-box" class="message-box">Message submitted successfully!</div>
+        <div id="error-box" class="error-box">Something went wrong. Please try again.</div>
         
         <script>
             document.getElementById('contactForm').addEventListener('submit', function(e) {
