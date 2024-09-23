@@ -183,20 +183,40 @@
         </div>
 
         <h2 class="heading"> Send <span>Message</span></h2>
-        <form action="#">
+        <form id="contactForm">
             <div class="input-box">
-                <input type="text" placeholder="Full Name">
-                <input type="email" placeholder="Email">
+                <input type="text" name="fullName" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email" required>
             </div>
             <div class="input-box">
-                <input type="number" placeholder="Mobile Number">
-                <input type="text" placeholder="Email Subject">
+                <input type="number" name="mobile" placeholder="Mobile Number" required>
+                <input type="text" name="subject" placeholder="Email Subject" required>
             </div>
-
-            <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+            <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
             <input type="submit" value="Submit" class="btn">
-            
         </form>
+        
+        <script>
+          document.getElementById('contactForm').addEventListener('submit', function(e) {
+              e.preventDefault();
+        
+              var formData = new FormData(this);
+        
+              fetch('https://script.google.com/macros/s/AKfycby6ID53Fgd_nHtCkeBGmYgWxhN8Nrr0raFnHOXseM75fHptELKXvqeNKkV8S66INI3itw/exec ', {
+                  method: 'POST',
+                  body: new URLSearchParams(formData)
+              })
+              .then(response => response.json())
+              .then(data => {
+                  if (data.result === "success") {
+                      alert('Message submitted successfully!');
+                  } else {
+                      alert('Something went wrong. Please try again.');
+                  }
+              })
+              .catch(error => console.error('Error:', error));
+          });
+        </script>        
 
         
     </section>
