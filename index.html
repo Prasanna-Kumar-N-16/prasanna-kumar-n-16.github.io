@@ -13,24 +13,6 @@
             font-weight: 700;
             cursor: default;
         }
-        .message-box {
-            display: none;
-            padding: 20px;
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        .error-box {
-            display: none;
-            padding: 20px;
-            background-color: #f44336;
-            color: white;
-            text-align: center;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
         
     </style>
     <title>PRASANNA KUMAR NAGABOYINA PORTFOLIO</title>
@@ -221,24 +203,32 @@
         <script>
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-          
                 var formData = new FormData(this);
-          
-                fetch('https://script.google.com/macros/s/AKfycby6ID53Fgd_nHtCkeBGmYgWxhN8Nrr0raFnHOXseM75fHptELKXvqeNKkV8S66INI3itw/exec ', {
+
+                fetch('https://script.google.com/macros/s/AKfycby6ID53Fgd_nHtCkeBGmYgWxhN8Nrr0raFnHOXseM75fHptELKXvqeNKkV8S66INI3itw/exec', {
                     method: 'POST',
                     body: new URLSearchParams(formData)
                 })
                 .then(response => response.json())
                 .then(data => {
                     if (data.result === "success") {
-                        alert('Message submitted successfully!');
+                        // Show success message
+                        document.getElementById('message-box').style.display = 'block';
+                        document.getElementById('error-box').style.display = 'none';
                     } else {
-                        alert('Something went wrong. Please try again.');
+                        // Show error message
+                        document.getElementById('error-box').style.display = 'block';
+                        document.getElementById('message-box').style.display = 'none';
                     }
                 })
-                .catch(error => console.error('Error:', error));
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Show error message
+                    document.getElementById('error-box').style.display = 'block';
+                    document.getElementById('message-box').style.display = 'none';
+                });
             });
-          </script>  
+        </script>
         
     </section>
 
