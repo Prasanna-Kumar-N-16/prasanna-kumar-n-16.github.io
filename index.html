@@ -197,27 +197,26 @@
         </form>
         
         <script>
-          document.getElementById('contactForm').addEventListener('submit', function(e) {
-              e.preventDefault();
-        
-              var formData = new FormData(this);
-        
-              fetch('https://script.google.com/macros/s/AKfycby6ID53Fgd_nHtCkeBGmYgWxhN8Nrr0raFnHOXseM75fHptELKXvqeNKkV8S66INI3itw/exec ', {
-                  method: 'POST',
-                  body: new URLSearchParams(formData)
-              })
-              .then(response => response.json())
-              .then(data => {
-                  if (data.result === "success") {
-                      alert('Message submitted successfully!');
-                  } else {
-                      alert('Something went wrong. Please try again.');
-                  }
-              })
-              .catch(error => console.error('Error:', error));
-          });
-        </script>        
-
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+          
+                var formData = new FormData(this);
+          
+                fetch('https://script.google.com/macros/s/AKfycby6ID53Fgd_nHtCkeBGmYgWxhN8Nrr0raFnHOXseM75fHptELKXvqeNKkV8S66INI3itw/exec ', {
+                    method: 'POST',
+                    body: new URLSearchParams(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.result === "success") {
+                        alert('Message submitted successfully!');
+                    } else {
+                        alert('Something went wrong. Please try again.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
+          </script>  
         
     </section>
 
