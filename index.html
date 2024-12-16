@@ -142,40 +142,45 @@
         </div>
     </section>
 
-   <!-- Projects SECTION DESIGN -->
+<!-- Projects SECTION DESIGN -->
 <section class="projects" id="projects">
     <h2 class="heading">My <span>projects</span></h2>
-    <div class="projects-container">
-        <div class="projects-box">   
-            <img src="images/Blockchain.jpg" alt="Project 1">
-            <h3>Blockchain-Based Supply Chain Management</h3>
-            <p class="project-brief">A decentralized supply chain tracking system using blockchain technology</p>
-            <div class="project-details" id="project1-details">
-                <h4>Tech Stack:</h4>
-                <ul>
-                    <li>Golang</li>
-                    <li>Hyperledger Fabric</li>
-                    <li>Docker</li>
-                    <li>MongoDB</li>
-                </ul>
-                <h4>Key Features:</h4>
-                <ul>
-                    <li>Real-time tracking of products</li>
-                    <li>Smart contract implementation</li>
-                    <li>Secure authentication system</li>
-                    <li>RESTful API integration</li>
-                </ul>
-                <div class="project-links">
-                    <a href="https://github.com/yourusername/project1" class="btn" target="_blank">
-                        <i class="fab fa-github"></i> View Code
-                    </a>
-                    <a href="https://project1-demo.com" class="btn" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>
+    <div class="projects-slider">
+        <button class="slider-btn prev-btn" onclick="slideProjects('left')">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="projects-container">
+            <div class="projects-box">   
+                <img src="images/Blockchain.jpg" alt="Project 1">
+                <h3>Blockchain-Based Supply Chain Management</h3>
+                <p class="project-brief">A decentralized supply chain tracking system using blockchain technology</p>
+                <div class="project-details" id="project1-details">
+                    <h4>Tech Stack:</h4>
+                    <ul>
+                        <li>Golang</li>
+                        <li>Hyperledger Fabric</li>
+                        <li>Docker</li>
+                        <li>MongoDB</li>
+                    </ul>
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>Real-time tracking of products</li>
+                        <li>Smart contract implementation</li>
+                        <li>Secure authentication system</li>
+                        <li>RESTful API integration</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/project1" class="btn" target="_blank">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                        <a href="https://project1-demo.com" class="btn" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <button class="btn project-btn" onclick="toggleProject('project1-details')">Learn More</button>
-        </div>  
+                <button class="btn project-btn" onclick="toggleProject('project1-details')">Learn More</button>
+            </div>  
 
         <div class="projects-box">   
             <img src="images/image.png" alt="Project 2">
@@ -207,6 +212,13 @@
             </div>
             <button class="btn project-btn" onclick="toggleProject('project2-details')">Learn More</button>
         </div>  
+            
+            <!-- Add more project boxes as needed -->
+        </div>
+
+        <button class="slider-btn next-btn" onclick="slideProjects('right')">
+            <i class="fas fa-chevron-right"></i>
+        </button>
     </div>
 </section>
 
@@ -248,21 +260,37 @@
         <div id="error-box" class="error-box">Something went wrong. Please try again.</div>
         
         <script>
-             function toggleProject(projectId) {
-                const details = document.getElementById(projectId);
-                const allDetails = document.querySelectorAll('.project-details');
+            function slideProjects(direction) {
+                const container = document.querySelector('.projects-container');
+                const scrollAmount = 350; // Adjust this value based on your project box width + gap
                 
-                // Hide all other project details
-                allDetails.forEach(detail => {
-                    if (detail.id !== projectId) {
-                        detail.classList.remove('show-details');
-                    }
-                });
-
-                // Toggle the clicked project's details
-                details.classList.toggle('show-details');
+                if (direction === 'left') {
+                    container.scrollLeft -= scrollAmount;
+                } else {
+                    container.scrollLeft += scrollAmount;
+                }
             }
-            
+
+            // Optional: Add automatic sliding
+            let autoSlideInterval;
+
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(() => {
+                    slideProjects('right');
+                }, 5000); // Slides every 5 seconds
+            }
+
+            function stopAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+
+            // Start auto-sliding when the page loads
+            document.addEventListener('DOMContentLoaded', startAutoSlide);
+
+            // Stop auto-sliding when user interacts with the slider
+            document.querySelector('.projects-container').addEventListener('mouseenter', stopAutoSlide);
+            document.querySelector('.projects-container').addEventListener('mouseleave', startAutoSlide);
+
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 var formData = new FormData(this);

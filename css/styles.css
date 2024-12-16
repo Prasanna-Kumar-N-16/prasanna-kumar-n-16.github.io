@@ -533,13 +533,6 @@ span{
     margin-top: 20px;
 }
 
-.projects-box {
-    position: relative;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    transition: all 0.3s ease;
-}
 
 .project-brief {
     margin: 10px 0;
@@ -581,4 +574,70 @@ span{
 
 .show-details {
     display: block;
+}
+
+.projects-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.projects-container {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 40px;
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.projects-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.projects-box {
+    min-width: 300px;
+    flex: 0 0 auto;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 2rem;
+    text-align: center;
+    border: .2rem solid var(--bg-color);
+    transition: .5s ease;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s ease;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.slider-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.projects-box:hover {
+    border-color: var(--main-color);
+    transform: scale(1.02);
 }
