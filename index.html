@@ -248,6 +248,21 @@
         <div id="error-box" class="error-box">Something went wrong. Please try again.</div>
         
         <script>
+             function toggleProject(projectId) {
+                const details = document.getElementById(projectId);
+                const allDetails = document.querySelectorAll('.project-details');
+                
+                // Hide all other project details
+                allDetails.forEach(detail => {
+                    if (detail.id !== projectId) {
+                        detail.classList.remove('show-details');
+                    }
+                });
+
+                // Toggle the clicked project's details
+                details.classList.toggle('show-details');
+            }
+            
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 var formData = new FormData(this);
