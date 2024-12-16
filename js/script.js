@@ -51,54 +51,75 @@ ScrollReveal().reveal('.home-contact p, .about-content', { origin: 'right'});
 
 
 /*================ project section bar ===============*/
-// Add this to your scripts.js file
-
+// Projects slider functionality
 let currentSlide = 0;
-const projectsContainer = document.querySelector('.projects-container');
+const projectsWrapper = document.querySelector('.projects-wrapper');
 const projectBoxes = document.querySelectorAll('.projects-box');
-const totalSlides = projectBoxes.length;
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+function updateSlideButtons() {
+    const maxSlides = projectBoxes.length - (window.innerWidth > 991 ? 2 : 1);
+    prevBtn.disabled = currentSlide === 0;
+    nextBtn.disabled = currentSlide >= maxSlides;
+    
+    prevBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
+    nextBtn.style.opacity = currentSlide >= maxSlides ? '0.5' : '1';
+}
 
 function slideProjects(direction) {
-    if (direction === 'left') {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    } else {
-        currentSlide = (currentSlide + 1) % totalSlides;
+    const boxWidth = projectBoxes[0].offsetWidth + 32; // Width + gap
+    const maxSlides = projectBoxes.length - (window.innerWidth > 991 ? 2 : 1);
+    
+    if (direction === 'left' && currentSlide > 0) {
+        currentSlide--;
+    } else if (direction === 'right' && currentSlide < maxSlides) {
+        currentSlide++;
     }
     
-    updateSlidePosition();
+    projectsWrapper.style.transform = `translateX(-${currentSlide * boxWidth}px)`;
+    updateSlideButtons();
 }
 
-function updateSlidePosition() {
-    projectsContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-}
+// Event listeners for slider buttons
+prevBtn.addEventListener('click', () => slideProjects('left'));
+nextBtn.addEventListener('click', () => slideProjects('right'));
 
+// Toggle project details
+// Toggle project details
 function toggleProject(detailsId) {
-    // First, close all other project details
-    const allDetails = document.querySelectorAll('.project-details');
-    allDetails.forEach(detail => {
+    console.log('Toggle called for:', detailsId); // Debug log
+    const details = document.getElementById(detailsId);
+    
+    if (!details) {
+        console.error('Project details element not found:', detailsId);
+        return;
+    }
+
+    // Close all other project details
+    document.querySelectorAll('.project-details').forEach(detail => {
         if (detail.id !== detailsId) {
-            detail.classList.remove('show-details');
+            detail.classList.remove('active');
         }
     });
-
+    
     // Toggle the clicked project details
-    const details = document.getElementById(detailsId);
-    details.classList.toggle('show-details');
+    details.classList.toggle('active');
     
     // Update button text
     const button = details.nextElementSibling;
-    if (details.classList.contains('show-details')) {
-        button.textContent = 'Show Less';
-    } else {
-        button.textContent = 'Learn More';
+    if (button && button.classList.contains('project-btn')) {
+        button.textContent = details.classList.contains('active') ? 'Show Less' : 'Learn More';
     }
 }
 
-// Optional: Add keyboard navigation
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-        slideProjects('left');
-    } else if (e.key === 'ArrowRight') {
-        slideProjects('right');
-    }
+// Add event listener after DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Add click handlers to all project buttons
+    document.querySelectorAll('.project-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const detailsId = this.previousElementSibling.id;
+            toggleProject(detailsId);
+        });
+    });
 });
