@@ -264,53 +264,6 @@
         <script>
 
             // Add this to your scripts.js file
-
-let currentSlide = 0;
-const projectsContainer = document.querySelector('.projects-container');
-const projectBoxes = document.querySelectorAll('.projects-box');
-const totalSlides = projectBoxes.length;
-
-function slideProjects(direction) {
-    if (direction === 'left') {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    } else {
-        currentSlide = (currentSlide + 1) % totalSlides;
-    }
-
-    updateSlidePosition();
-}
-
-function updateSlidePosition() {
-    projectsContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-}
-
-// Optional: Auto-sliding functionality
-let autoSlideInterval;
-
-function startAutoSlide() {
-    autoSlideInterval = setInterval(() => {
-        slideProjects('right');
-    }, 5000); // Slides every 5 seconds
-}
-
-function stopAutoSlide() {
-    clearInterval(autoSlideInterval);
-}
-
-// Initialize auto-sliding
-document.addEventListener('DOMContentLoaded', () => {
-    startAutoSlide();
-    
-    // Stop auto-sliding when user interacts with the slider
-    projectsContainer.addEventListener('mouseenter', stopAutoSlide);
-    projectsContainer.addEventListener('mouseleave', startAutoSlide);
-});
-
-// Add function to toggle project details
-function toggleProject(detailsId) {
-    const details = document.getElementById(detailsId);
-    details.classList.toggle('show-details');
-}
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 var formData = new FormData(this);

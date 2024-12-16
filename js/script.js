@@ -48,3 +48,57 @@ ScrollReveal().reveal('.home-content, heading', { origin: 'top' });
 ScrollReveal().reveal('.home-img, .services-container, .portfolio-box, .contact form', { origin: 'button' });
 ScrollReveal().reveal('.home-contact h1, .about-img', { origin: 'left' }); 
 ScrollReveal().reveal('.home-contact p, .about-content', { origin: 'right'});
+
+
+/*================ project section bar ===============*/
+// Add this to your scripts.js file
+
+let currentSlide = 0;
+const projectsContainer = document.querySelector('.projects-container');
+const projectBoxes = document.querySelectorAll('.projects-box');
+const totalSlides = projectBoxes.length;
+
+function slideProjects(direction) {
+    if (direction === 'left') {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    } else {
+        currentSlide = (currentSlide + 1) % totalSlides;
+    }
+    
+    updateSlidePosition();
+}
+
+function updateSlidePosition() {
+    projectsContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+function toggleProject(detailsId) {
+    // First, close all other project details
+    const allDetails = document.querySelectorAll('.project-details');
+    allDetails.forEach(detail => {
+        if (detail.id !== detailsId) {
+            detail.classList.remove('show-details');
+        }
+    });
+
+    // Toggle the clicked project details
+    const details = document.getElementById(detailsId);
+    details.classList.toggle('show-details');
+    
+    // Update button text
+    const button = details.nextElementSibling;
+    if (details.classList.contains('show-details')) {
+        button.textContent = 'Show Less';
+    } else {
+        button.textContent = 'Learn More';
+    }
+}
+
+// Optional: Add keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+        slideProjects('left');
+    } else if (e.key === 'ArrowRight') {
+        slideProjects('right');
+    }
+});
