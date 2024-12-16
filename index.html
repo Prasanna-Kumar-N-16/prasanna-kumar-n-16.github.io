@@ -143,22 +143,69 @@
     </section>
 
    <!-- Projects SECTION DESIGN -->
-   <section class="projects" id="projects">
-
-    <h2 class="heading"> My <span>projects</span> </h2>
+<section class="projects" id="projects">
+    <h2 class="heading">My <span>projects</span></h2>
     <div class="projects-container">
-
         <div class="projects-box">   
             <img src="images/Blockchain.jpg" alt="Project 1">
-            <h3> Project 1 </h3>
-            <p>Description comming soon</p>
-            
+            <h3>Blockchain-Based Supply Chain Management</h3>
+            <p class="project-brief">A decentralized supply chain tracking system using blockchain technology</p>
+            <div class="project-details" id="project1-details">
+                <h4>Tech Stack:</h4>
+                <ul>
+                    <li>Golang</li>
+                    <li>Hyperledger Fabric</li>
+                    <li>Docker</li>
+                    <li>MongoDB</li>
+                </ul>
+                <h4>Key Features:</h4>
+                <ul>
+                    <li>Real-time tracking of products</li>
+                    <li>Smart contract implementation</li>
+                    <li>Secure authentication system</li>
+                    <li>RESTful API integration</li>
+                </ul>
+                <div class="project-links">
+                    <a href="https://github.com/yourusername/project1" class="btn" target="_blank">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                    <a href="https://project1-demo.com" class="btn" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                </div>
+            </div>
+            <button class="btn project-btn" onclick="toggleProject('project1-details')">Learn More</button>
         </div>  
 
         <div class="projects-box">   
-            <img src="images/image.png" alt="Project 1">
-            <h3> Project 2  </h3>
-            <p>Description comming soon.</p>
+            <img src="images/image.png" alt="Project 2">
+            <h3>Microservices Architecture System</h3>
+            <p class="project-brief">Scalable microservices-based application with container orchestration</p>
+            <div class="project-details" id="project2-details">
+                <h4>Tech Stack:</h4>
+                <ul>
+                    <li>Python</li>
+                    <li>Kubernetes</li>
+                    <li>AWS</li>
+                    <li>PostgreSQL</li>
+                </ul>
+                <h4>Key Features:</h4>
+                <ul>
+                    <li>Service discovery</li>
+                    <li>Load balancing</li>
+                    <li>Auto-scaling</li>
+                    <li>Monitoring with Prometheus</li>
+                </ul>
+                <div class="project-links">
+                    <a href="https://github.com/yourusername/project2" class="btn" target="_blank">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                    <a href="https://project2-demo.com" class="btn" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                </div>
+            </div>
+            <button class="btn project-btn" onclick="toggleProject('project2-details')">Learn More</button>
         </div>  
     </div>
 </section>
