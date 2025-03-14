@@ -98,8 +98,7 @@ span{
 }
 
 .home-img img {
-    width: 30vw;
-    animation: floatImage 4s ease-in-out infinite;
+    width: 20vw;
 }
 
 @keyframes floatImage {
@@ -116,6 +115,7 @@ span{
 
 .home-content p {
     font-size: 1.6rem;
+    margin-bottom: 2rem;
 }
 
 .social-media a {
@@ -407,6 +407,38 @@ span{
     }
 }
 
+/* Experience Section */
+#experience h2 {
+  text-align: left;
+  line-height: 1.2;
+  font-size: 4.5rem;
+  margin-bottom: 3rem;
+}
+
+.experience-item {
+  margin-bottom: 3rem;
+}
+
+.experience-item h3 {
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.exp-date {
+  font-size: 1.6rem;
+  color: #aaa;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.experience-item ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+  color: #ddd;
+  font-size: 1.6rem;
+}
+
 
 
 
@@ -442,10 +474,10 @@ span{
         flex-direction: column;
     }
     .home-content h3 {
-        font-size: 2.6rem;
+        font-size: 2rem;
     }
     .home-content h1 {
-        font-size: 5rem
+        font-size: 3.6rem
     }
 
     .home-content {
@@ -470,9 +502,6 @@ span{
         margin-bottom: 3rem;
     }
     
-    .skills h2 {    
-        margin-bottom: 3rem;
-    }
 
     .skills-container {  
         grid-template-columns: repeat(2,1fr);
